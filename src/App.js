@@ -6,7 +6,6 @@ import useWall from './hooks/useWall'
 export default function App() {
   const wallHook = useWall()
 
-
   return (
     <SafeAreaView style={styles.safe}>
       <Wall {...wallHook} />
@@ -17,5 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
