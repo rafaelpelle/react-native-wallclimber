@@ -1,16 +1,11 @@
 import React from 'react'
-import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView'
-import { StyleSheet, TouchableWithoutFeedback, View, FlatList } from 'react-native'
 import { wallParams } from '../constants'
+import { StyleSheet, View, FlatList } from 'react-native'
+import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView'
+import Hole from './Hole'
 
-export default function Wall({ wall }) {
-  const formatData = () => {}
-
-  const renderItem = ({ item, index }) => (
-    <TouchableWithoutFeedback>
-      <View style={styles.block} />
-    </TouchableWithoutFeedback>
-  )
+export default function Wall({ wall, handleHoleClick }) {
+  const renderItem = ({ item, index }) => <Hole hole={item} index={index} handleHoleClick={handleHoleClick} />
 
   return (
     <View style={styles.view}>
@@ -42,10 +37,4 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   listStyle: {},
-  block: {
-    width: wallParams.getWallHoleSize(),
-    height: wallParams.getWallHoleSize(),
-    borderWidth: 1,
-    borderColor: 'black',
-  },
 })

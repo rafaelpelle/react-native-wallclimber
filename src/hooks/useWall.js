@@ -19,7 +19,17 @@ export default function useWall() {
     )
   }
 
+  const handleHoleClick = (index) => {
+    const newWall = [...wall]
+    newWall[index] = {
+      ...newWall[index],
+      filledWith: 1,
+    }
+    setWall(newWall)
+  }
+
   return {
     wall,
+    handleHoleClick,
   }
 }
