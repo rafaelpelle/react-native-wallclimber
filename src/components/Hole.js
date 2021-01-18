@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   emptyHole: {
-    width: '20%',
-    height: '20%',
+    width: '13%',
+    height: '13%',
     backgroundColor: 'black',
     borderRadius: 100,
   },
