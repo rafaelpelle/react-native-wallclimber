@@ -1,12 +1,20 @@
 import React from 'react'
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
-import { wallParams } from '../constants'
+import { StyleSheet, TouchableWithoutFeedback, View, Image } from 'react-native'
+import { wallParams, holdOptions, colors } from '../constants'
 
 export default function Hole({ hole, index, handleHoleLongPress }) {
+  const getImgSrc = () => holdOptions.find(({ id }) => id === hole.filledWith)?.image
+
   return (
     <TouchableWithoutFeedback onLongPress={() => handleHoleLongPress(index)}>
       <View style={styles.block}>
-        {!hole.filledWith ? <View style={styles.emptyHole} /> : <View style={styles.filledHole} />}
+        {hole.filledWith ? (
+          <View style={styles.imageContainer}>
+            <Image style={styles.image} source={getImgSrc()} />
+          </View>
+        ) : (
+          <View style={styles.emptyHole} />
+        )}
       </View>
     </TouchableWithoutFeedback>
   )
@@ -26,10 +34,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     borderRadius: 100,
   },
-  filledHole: {
-    width: '40%',
-    height: '40%',
-    backgroundColor: 'red',
-    borderRadius: 100,
+  imageContainer: {
+    width: '85%',
+    height: '85%',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
   },
 })
