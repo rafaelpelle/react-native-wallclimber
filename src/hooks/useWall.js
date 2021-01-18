@@ -3,6 +3,8 @@ import { wallParams } from '../constants'
 
 export default function useWall() {
   const [wall, setWall] = useState(null)
+  const [selectedHole, setSelectedHole] = useState(null)
+  const [modalVisible, setModalVisible] = useState(false)
 
   useEffect(() => {
     initializeWall()
@@ -19,17 +21,31 @@ export default function useWall() {
     )
   }
 
-  const handleHoleClick = (index) => {
+  const handleHoleLongPress = (index) => {
+    setSelectedHole(index)
+    setModalVisible(true)
+  }
+
+  const handleSelectHold = (holdId) => {
     const newWall = [...wall]
-    newWall[index] = {
-      ...newWall[index],
-      filledWith: 1,
+    newWall[selectedHole] = {
+      ...newWall[selectedHole],
+      filledWith: holdId,
     }
     setWall(newWall)
+    setModalVisible(false)
+    setSelectedHole(null)
+  }
+
+  const handleModalClose = () => {
+    setModalVisible(false)
   }
 
   return {
     wall,
-    handleHoleClick,
+    modalVisible,
+    handleHoleLongPress,
+    handleModalClose,
+    handleSelectHold,
   }
 }

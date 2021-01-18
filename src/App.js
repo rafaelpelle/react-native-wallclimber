@@ -15,7 +15,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   safe: {
-    flex: 1,
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },

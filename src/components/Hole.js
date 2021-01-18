@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { wallParams } from '../constants'
 
-export default function Hole({ hole, index, handleHoleClick }) {
+export default function Hole({ hole, index, handleHoleLongPress }) {
   return (
-    <TouchableWithoutFeedback onPress={() => handleHoleClick(index)}>
+    <TouchableWithoutFeedback onLongPress={() => handleHoleLongPress(index)}>
       <View style={styles.block}>
         {!hole.filledWith ? <View style={styles.emptyHole} /> : <View style={styles.filledHole} />}
       </View>
